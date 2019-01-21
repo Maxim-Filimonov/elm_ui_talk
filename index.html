@@ -4476,11 +4476,6 @@ var elm$core$Set$toList = function (_n0) {
 	var dict = _n0.a;
 	return elm$core$Dict$keys(dict);
 };
-var mdgriffith$elm_ui$Internal$Model$AlignX = function (a) {
-	return {$: 'AlignX', a: a};
-};
-var mdgriffith$elm_ui$Internal$Model$Left = {$: 'Left'};
-var mdgriffith$elm_ui$Element$alignLeft = mdgriffith$elm_ui$Internal$Model$AlignX(mdgriffith$elm_ui$Internal$Model$Left);
 var mdgriffith$elm_ui$Internal$Model$Content = {$: 'Content'};
 var mdgriffith$elm_ui$Element$shrink = mdgriffith$elm_ui$Internal$Model$Content;
 var mdgriffith$elm_ui$Internal$Model$Width = function (a) {
@@ -10361,8 +10356,7 @@ var mdgriffith$elm_ui$Element$image = F2(
 	});
 var author$project$Main$logo = A2(
 	mdgriffith$elm_ui$Element$el,
-	_List_fromArray(
-		[mdgriffith$elm_ui$Element$alignLeft]),
+	_List_Nil,
 	A2(
 		mdgriffith$elm_ui$Element$image,
 		_List_fromArray(
@@ -10370,6 +10364,11 @@ var author$project$Main$logo = A2(
 		{description: 'Logo', src: 'https://placekitten.com/200/300'}));
 var author$project$Main$HideMenu = {$: 'HideMenu'};
 var author$project$Main$ShowMenu = {$: 'ShowMenu'};
+var mdgriffith$elm_ui$Internal$Model$AlignX = function (a) {
+	return {$: 'AlignX', a: a};
+};
+var mdgriffith$elm_ui$Internal$Model$Right = {$: 'Right'};
+var mdgriffith$elm_ui$Element$alignRight = mdgriffith$elm_ui$Internal$Model$AlignX(mdgriffith$elm_ui$Internal$Model$Right);
 var mdgriffith$elm_ui$Internal$Model$Below = {$: 'Below'};
 var mdgriffith$elm_ui$Internal$Model$Nearby = F2(
 	function (a, b) {
@@ -10418,6 +10417,29 @@ var mdgriffith$elm_ui$Element$row = F2(
 						attrs))),
 			mdgriffith$elm_ui$Internal$Model$Unkeyed(children));
 	});
+var mdgriffith$elm_ui$Internal$Flag$spacing = mdgriffith$elm_ui$Internal$Flag$flag(3);
+var mdgriffith$elm_ui$Internal$Model$SpacingStyle = F3(
+	function (a, b, c) {
+		return {$: 'SpacingStyle', a: a, b: b, c: c};
+	});
+var mdgriffith$elm_ui$Internal$Model$StyleClass = F2(
+	function (a, b) {
+		return {$: 'StyleClass', a: a, b: b};
+	});
+var mdgriffith$elm_ui$Internal$Model$spacingName = F2(
+	function (x, y) {
+		return 'spacing-' + (elm$core$String$fromInt(x) + ('-' + elm$core$String$fromInt(y)));
+	});
+var mdgriffith$elm_ui$Element$spacing = function (x) {
+	return A2(
+		mdgriffith$elm_ui$Internal$Model$StyleClass,
+		mdgriffith$elm_ui$Internal$Flag$spacing,
+		A3(
+			mdgriffith$elm_ui$Internal$Model$SpacingStyle,
+			A2(mdgriffith$elm_ui$Internal$Model$spacingName, x, x),
+			x,
+			x));
+};
 var mdgriffith$elm_ui$Internal$Model$Text = function (a) {
 	return {$: 'Text', a: a};
 };
@@ -10473,15 +10495,19 @@ var author$project$Main$menu = function (showSubMenu) {
 		_Utils_ap(
 			_List_fromArray(
 				[
-					mdgriffith$elm_ui$Element$Events$onMouseEnter(author$project$Main$ShowMenu),
-					mdgriffith$elm_ui$Element$Events$onMouseLeave(author$project$Main$HideMenu)
+					mdgriffith$elm_ui$Element$alignRight,
+					mdgriffith$elm_ui$Element$spacing(20)
 				]),
 			subMenu),
 		_List_fromArray(
 			[
 				A2(
 				mdgriffith$elm_ui$Element$el,
-				_List_Nil,
+				_List_fromArray(
+					[
+						mdgriffith$elm_ui$Element$Events$onMouseEnter(author$project$Main$ShowMenu),
+						mdgriffith$elm_ui$Element$Events$onMouseLeave(author$project$Main$HideMenu)
+					]),
 				mdgriffith$elm_ui$Element$text('Menu')),
 				A2(
 				mdgriffith$elm_ui$Element$el,
@@ -10493,10 +10519,6 @@ var mdgriffith$elm_ui$Internal$Flag$padding = mdgriffith$elm_ui$Internal$Flag$fl
 var mdgriffith$elm_ui$Internal$Model$PaddingStyle = F5(
 	function (a, b, c, d, e) {
 		return {$: 'PaddingStyle', a: a, b: b, c: c, d: d, e: e};
-	});
-var mdgriffith$elm_ui$Internal$Model$StyleClass = F2(
-	function (a, b) {
-		return {$: 'StyleClass', a: a, b: b};
 	});
 var mdgriffith$elm_ui$Element$paddingXY = F2(
 	function (x, y) {
@@ -10635,25 +10657,6 @@ var mdgriffith$elm_ui$Internal$Model$Rgba = F4(
 		return {$: 'Rgba', a: a, b: b, c: c, d: d};
 	});
 var mdgriffith$elm_ui$Element$rgba = mdgriffith$elm_ui$Internal$Model$Rgba;
-var mdgriffith$elm_ui$Internal$Flag$spacing = mdgriffith$elm_ui$Internal$Flag$flag(3);
-var mdgriffith$elm_ui$Internal$Model$SpacingStyle = F3(
-	function (a, b, c) {
-		return {$: 'SpacingStyle', a: a, b: b, c: c};
-	});
-var mdgriffith$elm_ui$Internal$Model$spacingName = F2(
-	function (x, y) {
-		return 'spacing-' + (elm$core$String$fromInt(x) + ('-' + elm$core$String$fromInt(y)));
-	});
-var mdgriffith$elm_ui$Element$spacing = function (x) {
-	return A2(
-		mdgriffith$elm_ui$Internal$Model$StyleClass,
-		mdgriffith$elm_ui$Internal$Flag$spacing,
-		A3(
-			mdgriffith$elm_ui$Internal$Model$SpacingStyle,
-			A2(mdgriffith$elm_ui$Internal$Model$spacingName, x, x),
-			x,
-			x));
-};
 var mdgriffith$elm_ui$Internal$Flag$bgColor = mdgriffith$elm_ui$Internal$Flag$flag(8);
 var mdgriffith$elm_ui$Internal$Model$Colored = F3(
 	function (a, b, c) {
@@ -11386,7 +11389,11 @@ var author$project$Main$searchBar = function (model) {
 	return A2(
 		mdgriffith$elm_ui$Element$el,
 		_List_fromArray(
-			[mdgriffith$elm_ui$Element$centerX]),
+			[
+				mdgriffith$elm_ui$Element$width(
+				mdgriffith$elm_ui$Element$px(300)),
+				mdgriffith$elm_ui$Element$centerX
+			]),
 		A2(
 			mdgriffith$elm_ui$Element$Input$text,
 			_List_Nil,
@@ -11401,6 +11408,7 @@ var author$project$Main$searchBar = function (model) {
 				text: model.search
 			}));
 };
+var mdgriffith$elm_ui$Element$fillPortion = mdgriffith$elm_ui$Internal$Model$Fill;
 var mdgriffith$elm_ui$Internal$Flag$borderStyle = mdgriffith$elm_ui$Internal$Flag$flag(11);
 var mdgriffith$elm_ui$Element$Border$solid = A2(mdgriffith$elm_ui$Internal$Model$Class, mdgriffith$elm_ui$Internal$Flag$borderStyle, mdgriffith$elm_ui$Internal$Style$classes.borderSolid);
 var mdgriffith$elm_ui$Element$Border$widthXY = F2(
@@ -11448,9 +11456,30 @@ var author$project$Main$nav = function (model) {
 			]),
 		_List_fromArray(
 			[
-				author$project$Main$logo,
-				author$project$Main$searchBar(model),
-				author$project$Main$menu(model.toggleMenu)
+				A2(
+				mdgriffith$elm_ui$Element$el,
+				_List_fromArray(
+					[
+						mdgriffith$elm_ui$Element$width(
+						mdgriffith$elm_ui$Element$fillPortion(1))
+					]),
+				author$project$Main$logo),
+				A2(
+				mdgriffith$elm_ui$Element$el,
+				_List_fromArray(
+					[
+						mdgriffith$elm_ui$Element$width(
+						mdgriffith$elm_ui$Element$fillPortion(3))
+					]),
+				author$project$Main$searchBar(model)),
+				A2(
+				mdgriffith$elm_ui$Element$el,
+				_List_fromArray(
+					[
+						mdgriffith$elm_ui$Element$width(
+						mdgriffith$elm_ui$Element$fillPortion(1))
+					]),
+				author$project$Main$menu(model.toggleMenu))
 			]));
 };
 var mdgriffith$elm_ui$Internal$Model$OnlyDynamic = F2(

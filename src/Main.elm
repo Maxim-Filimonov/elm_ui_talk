@@ -69,14 +69,14 @@ nav model =
         , Element.Border.solid
         , Element.Border.widthEach { bottom = 1, left = 0, right = 0, top = 0 }
         ]
-        [ logo
-        , searchBar model
-        , menu model.toggleMenu
+        [ el [ E.width (E.fillPortion 1) ] logo
+        , el [ E.width (E.fillPortion 3) ] <| searchBar model
+        , el [ E.width (E.fillPortion 1) ] <| menu model.toggleMenu
         ]
 
 
 logo =
-    el [ E.alignLeft ] <|
+    el [] <|
         E.image
             [ navHeight ]
             { src = "https://placekitten.com/200/300"
@@ -101,18 +101,23 @@ menu showSubMenu =
                 []
     in
     row
-        ([ Events.onMouseEnter ShowMenu
-         , Events.onMouseLeave HideMenu
+        ([ E.alignRight
+         , E.spacing 20
          ]
             ++ subMenu
         )
-        [ el [] <| text "Menu"
+        [ el
+            [ Events.onMouseEnter ShowMenu
+            , Events.onMouseLeave HideMenu
+            ]
+          <|
+            text "Menu"
         , el [] <| text "Another menu"
         ]
 
 
 searchBar model =
-    el [ centerX ] <|
+    el [ E.width (E.px 300), centerX ] <|
         EI.text []
             { label = EI.labelHidden "search bar"
             , text = model.search
