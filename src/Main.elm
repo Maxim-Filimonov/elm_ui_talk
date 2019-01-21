@@ -100,14 +100,15 @@ menu showSubMenu =
             else
                 []
     in
-    el
+    row
         ([ Events.onMouseEnter ShowMenu
          , Events.onMouseLeave HideMenu
          ]
             ++ subMenu
         )
-    <|
-        text "Menu"
+        [ el [] <| text "Menu"
+        , el [] <| text "Another menu"
+        ]
 
 
 searchBar model =

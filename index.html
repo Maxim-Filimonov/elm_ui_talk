@@ -10398,6 +10398,26 @@ var mdgriffith$elm_ui$Element$column = F2(
 						attrs))),
 			mdgriffith$elm_ui$Internal$Model$Unkeyed(children));
 	});
+var mdgriffith$elm_ui$Internal$Model$AsRow = {$: 'AsRow'};
+var mdgriffith$elm_ui$Internal$Model$asRow = mdgriffith$elm_ui$Internal$Model$AsRow;
+var mdgriffith$elm_ui$Element$row = F2(
+	function (attrs, children) {
+		return A4(
+			mdgriffith$elm_ui$Internal$Model$element,
+			mdgriffith$elm_ui$Internal$Model$asRow,
+			mdgriffith$elm_ui$Internal$Model$div,
+			A2(
+				elm$core$List$cons,
+				mdgriffith$elm_ui$Internal$Model$htmlClass(mdgriffith$elm_ui$Internal$Style$classes.contentLeft + (' ' + mdgriffith$elm_ui$Internal$Style$classes.contentCenterY)),
+				A2(
+					elm$core$List$cons,
+					mdgriffith$elm_ui$Element$width(mdgriffith$elm_ui$Element$shrink),
+					A2(
+						elm$core$List$cons,
+						mdgriffith$elm_ui$Element$height(mdgriffith$elm_ui$Element$shrink),
+						attrs))),
+			mdgriffith$elm_ui$Internal$Model$Unkeyed(children));
+	});
 var mdgriffith$elm_ui$Internal$Model$Text = function (a) {
 	return {$: 'Text', a: a};
 };
@@ -10449,7 +10469,7 @@ var author$project$Main$menu = function (showSubMenu) {
 					])))
 		]) : _List_Nil;
 	return A2(
-		mdgriffith$elm_ui$Element$el,
+		mdgriffith$elm_ui$Element$row,
 		_Utils_ap(
 			_List_fromArray(
 				[
@@ -10457,7 +10477,17 @@ var author$project$Main$menu = function (showSubMenu) {
 					mdgriffith$elm_ui$Element$Events$onMouseLeave(author$project$Main$HideMenu)
 				]),
 			subMenu),
-		mdgriffith$elm_ui$Element$text('Menu'));
+		_List_fromArray(
+			[
+				A2(
+				mdgriffith$elm_ui$Element$el,
+				_List_Nil,
+				mdgriffith$elm_ui$Element$text('Menu')),
+				A2(
+				mdgriffith$elm_ui$Element$el,
+				_List_Nil,
+				mdgriffith$elm_ui$Element$text('Another menu'))
+			]));
 };
 var mdgriffith$elm_ui$Internal$Flag$padding = mdgriffith$elm_ui$Internal$Flag$flag(2);
 var mdgriffith$elm_ui$Internal$Model$PaddingStyle = F5(
@@ -10672,8 +10702,6 @@ var mdgriffith$elm_ui$Element$Input$Padding = F4(
 	function (a, b, c, d) {
 		return {$: 'Padding', a: a, b: b, c: c, d: d};
 	});
-var mdgriffith$elm_ui$Internal$Model$AsRow = {$: 'AsRow'};
-var mdgriffith$elm_ui$Internal$Model$asRow = mdgriffith$elm_ui$Internal$Model$AsRow;
 var mdgriffith$elm_ui$Element$Input$applyLabel = F3(
 	function (attrs, label, input) {
 		if (label.$ === 'HiddenLabel') {
@@ -11373,24 +11401,6 @@ var author$project$Main$searchBar = function (model) {
 				text: model.search
 			}));
 };
-var mdgriffith$elm_ui$Element$row = F2(
-	function (attrs, children) {
-		return A4(
-			mdgriffith$elm_ui$Internal$Model$element,
-			mdgriffith$elm_ui$Internal$Model$asRow,
-			mdgriffith$elm_ui$Internal$Model$div,
-			A2(
-				elm$core$List$cons,
-				mdgriffith$elm_ui$Internal$Model$htmlClass(mdgriffith$elm_ui$Internal$Style$classes.contentLeft + (' ' + mdgriffith$elm_ui$Internal$Style$classes.contentCenterY)),
-				A2(
-					elm$core$List$cons,
-					mdgriffith$elm_ui$Element$width(mdgriffith$elm_ui$Element$shrink),
-					A2(
-						elm$core$List$cons,
-						mdgriffith$elm_ui$Element$height(mdgriffith$elm_ui$Element$shrink),
-						attrs))),
-			mdgriffith$elm_ui$Internal$Model$Unkeyed(children));
-	});
 var mdgriffith$elm_ui$Internal$Flag$borderStyle = mdgriffith$elm_ui$Internal$Flag$flag(11);
 var mdgriffith$elm_ui$Element$Border$solid = A2(mdgriffith$elm_ui$Internal$Model$Class, mdgriffith$elm_ui$Internal$Flag$borderStyle, mdgriffith$elm_ui$Internal$Style$classes.borderSolid);
 var mdgriffith$elm_ui$Element$Border$widthXY = F2(
